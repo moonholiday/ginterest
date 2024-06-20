@@ -3,7 +3,7 @@ import {
     Dialog,
     DialogContent,
 } from "@/components/ui/dialog"
-import SignupForm from './form/SignupForm';
+import SignupForm from '../form/SignupForm';
 
 const SignupModal = ({
     isOpen,

@@ -1,9 +1,10 @@
 'use client'
+
 import Link from "next/link";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { useState } from "react";
-import LoginModal from "./LoginModal";
-import SignupModal from "./SignupModal";
+import LoginModal from "./modal/LoginModal";
+import SignupModal from "./modal/SignupModal";
 
 const Navbar = () => {
     const [isLoginModalOpen, setLoginModalOpen] = useState(false);
