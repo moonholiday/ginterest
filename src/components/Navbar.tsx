@@ -1,7 +1,16 @@
+'use client'
 import Link from "next/link";
 import MaxWidthWrapper from "./MaxWidthWrapper";
+import { useState } from "react";
+import LoginModal from "./LoginModal";
+import SignupModal from "./SignupModal";
 
 const Navbar = () => {
+    const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+    const [isSignupModalOpen, setSignupModalOpen] = useState(false);
+
+    const openLoginModal = () => setLoginModalOpen(true);
+    const openSignupModal = () => setSignupModalOpen(true);
     return (
         <nav>
             <MaxWidthWrapper>
@@ -21,13 +30,19 @@ const Navbar = () => {
                             <Link href="/blog">Blog</Link>
                         </div>
                         <div className="flex gap-2 items-center">
-                            <Link href="/login" className="bg-red-600 text-white font-semibold rounded-3xl py-2 px-3">Log in</Link>
-                            <Link href="/signup" className="bg-slate-200 font-semibold rounded-3xl py-2 px-3 ">Sign up</Link>
+                            <button onClick={openLoginModal} className=" bg-red-600 text-white font-semibold rounded-3xl py-2 px-3">
+                                Log in
+                            </button>
+                            <LoginModal isOpen={isLoginModalOpen} setIsOpen={setLoginModalOpen} />
+                            <button onClick={openSignupModal} className=" bg-gray-200 font-semibold rounded-3xl py-2 px-3">
+                                Sign up
+                            </button>
+                            <SignupModal isOpen={isSignupModalOpen} setIsOpen={setSignupModalOpen} />
                         </div>
                     </div>
                 </div>
             </MaxWidthWrapper>
-        </nav>
+        </nav >
     )
 }
 
