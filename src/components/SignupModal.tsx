@@ -2,8 +2,8 @@ import React, { Dispatch, SetStateAction } from 'react';
 import {
     Dialog,
     DialogContent,
-    DialogTitle,
 } from "@/components/ui/dialog"
+import SignupForm from './form/SignupForm';
 
 const SignupModal = ({
     isOpen,
@@ -14,8 +14,10 @@ const SignupModal = ({
 }) => {
     return (
         <Dialog onOpenChange={setIsOpen} open={isOpen}>
-            <DialogContent>
-                <DialogTitle>Signup</DialogTitle>
+            <DialogContent >
+                <div className='flex flex-col items-center gap-10'>
+                    <SignupForm />
+                </div>
             </DialogContent>
         </Dialog>
     );
