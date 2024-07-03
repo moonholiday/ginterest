@@ -18,8 +18,8 @@ const SignupModal = ({
         <Dialog onOpenChange={setIsOpen} open={isOpen}>
             <DialogContent>
                 <DialogTitle className="sr-only">Sign Up</DialogTitle>
-                <DialogDescription>This is a signup modal</DialogDescription>
-                <div className='flex flex-col items-center gap-10'>
+                <DialogDescription className="sr-only">This is a signup modal</DialogDescription>
+                <div className="flex flex-col items-center gap-10">
                     <SignupForm />
                 </div>
             </DialogContent>
