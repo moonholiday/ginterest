@@ -18,7 +18,11 @@ import { formSchema } from "@/lib/validationSchema"
 
 const LoginForm = () => {
     const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema)
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            email: '',
+            password: ''
+        }
     })
 
     const onSubmit = () => {
@@ -37,9 +41,9 @@ const LoginForm = () => {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-black">Email</FormLabel>
+                                <FormLabel htmlFor="email" className="text-black">Email</FormLabel>
                                 <FormControl>
-                                    <Input className="rounded-xl h-12 border-slate-400" placeholder="Email" {...field} />
+                                    <Input id="email" className="rounded-xl h-12 border-slate-400" autoComplete="email" placeholder="Email" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -50,9 +54,9 @@ const LoginForm = () => {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-black">Password</FormLabel>
+                                <FormLabel htmlFor="password" className="text-black">Password</FormLabel>
                                 <FormControl>
-                                    <Input className="rounded-xl h-12 border-slate-400" placeholder="Password" {...field} />
+                                    <Input id="password" className="rounded-xl h-12 border-slate-400" placeholder="Password" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -60,7 +64,6 @@ const LoginForm = () => {
                     />
                     <Button type="submit" className="bg-red-600 rounded-xl h-12">Continue</Button>
                 </form>
-
             </div>
         </Form>
     )

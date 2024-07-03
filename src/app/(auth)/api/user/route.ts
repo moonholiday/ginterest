@@ -1,11 +1,12 @@
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 import { hash } from "bcrypt";
+import { formSchema } from "@/lib/validationSchema";
 
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { email, password } = body;
+        const { email, password } = formSchema.parse(body);
 
         const existingEmail = await db.user.findUnique({
             where: { email: email }
@@ -23,9 +24,11 @@ export async function POST(req: Request) {
             }
         })
 
-        return NextResponse.json({ user: newUser, message: "User created successfully" }, { status: 201 })
+        const { password: newUserPassword, ...rest } = newUser;
+
+        return NextResponse.json({ user: rest, message: "User created successfully" }, { status: 201 })
 
     } catch (error) {
-
+        return NextResponse.json({ message: "Something went wrong" }, { status: 500 })
     }
 } 
